@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_categoria"
+        android:title="@string/categoria" />
+    <item
+        android:id="@+id/menu_colecao"
+        android:title="@string/colecao" />
+    <item
+        android:id="@+id/menu_itens_colecao"
+        android:title="@string/itens_da_colecao" />
+</menu>

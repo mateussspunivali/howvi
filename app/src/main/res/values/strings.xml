@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Gerenciamento de Coleções</string>
+    <string name="categoria">Categoria</string>
+    <string name="colecao">Coleção</string>
+    <string name="itens_da_colecao">Itens da Coleção</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="nome">Nome</string>
+    <string name="salvar">Salvar</string>
+    <string name="excluir">Excluir</string>
+    <string name="editar">Editar</string>
+    <string name="listar">Listar</string>
+    <string name="gerenciar_categorias">Gerenciar Categorias</string>
+    <string name="dialog_excluir_categoria">Deseja realmente excluir a categoria?</string>
+    <string name="dialog_excluir_colecao">Deseja realmente excluir a coleção?</string>
+    <string name="dialog_excluir_itens_colecao">Deseja realmente excluir o item da coleção?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="selecione_a_categoria">Selecione a Categoria</string>
+    <string name="descricao">Descrição</string>
+    <string name="data_de_inicio">Data de Início</string>
+    <string name="completa">Completa</string>
+    <string name="gerenciar_colecoes">Gerenciar Coleções</string>
+    <string name="gerenciar_itens_da_colecao">Gerenciar Itens da Coleção</string>
 </resources>
