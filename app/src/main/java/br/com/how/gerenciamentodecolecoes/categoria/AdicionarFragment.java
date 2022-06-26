@@ -28,13 +28,15 @@ public class AdicionarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.categoria_fragment_adicionar, container, false);
 
+        //Busca os campos do formulário
         etNome = v.findViewById(R.id.editTextNomeCategoria);
 
+        //Busca o button adicionar
         Button btnAdicionar = v.findViewById(R.id.buttonAdicionarCategoria);
 
+        //Sobscreve o listner de selecionar o botão para chamar o método adicionar da própria classe
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,14 +48,18 @@ public class AdicionarFragment extends Fragment {
     }
 
     private void adicionar () {
+        //Valida se os campos do fomulário não foram enviados vázios quando selecionado o botão adicionar
         if (etNome.getText().toString().equals("")) {
             Toast.makeText(getActivity(), "Por favor, informe o nome!", Toast.LENGTH_LONG).show();
         } else {
+            //Instância uma nova categoria preenche com os campos do formulário
             DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
             Categoria c = new Categoria();
             c.setNome(etNome.getText().toString());
+            //Salva a categoria no banco de dados
             databaseHelper.createCategoria(c);
             Toast.makeText(getActivity(), "Categoria salva!", Toast.LENGTH_LONG).show();
+            //Muda a tela para a listagem de categoria
             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameCategoria, new ListarFragment()).commit();
         }
     }

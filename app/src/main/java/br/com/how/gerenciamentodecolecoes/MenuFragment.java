@@ -37,12 +37,15 @@ public class MenuFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected (MenuItem item) {
         switch (item.getItemId()) {
+            //Caso seleciona o item do menu de categoria irá mudar a tela para a listagem de categorias
             case R.id.menu_categoria:
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameMain, new br.com.how.gerenciamentodecolecoes.categoria.MainFragment()).commit();
                 break;
+            //Caso seleciona o item do menu de coleção irá mudar a tela para a listagem de coleções
             case R.id.menu_colecao:
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameMain, new br.com.how.gerenciamentodecolecoes.colecao.MainFragment()).commit();
                 break;
+            //Caso seleciona o item do menu de item de coleção irá mudar a tela para a listagem de itens de coleções
             case R.id.menu_itens_colecao:
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameMain, new br.com.how.gerenciamentodecolecoes.itens_colecao.MainFragment()).commit();
                 break;

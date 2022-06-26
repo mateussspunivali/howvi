@@ -31,14 +31,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "descricao TEXT, " +
             "data_inicio DATE, " +
             "completa TINYINT, " +
-            "id_categoria TINYINT, " +
-            "CONSTRAINT fk_colecao_categoria FOREIGN KEY (id_categoria) REFERENCES categoria (id))";
+            "id_categoria INTEGER, " +
+            "CONSTRAINT fk_colecao_categoria FOREIGN KEY (id_categoria) REFERENCES categoria (id) ON DELETE CASCADE)";
     private static final String CREATE_TABLE_ITENS_COLECAO = "CREATE TABLE " + TABLE_ITENS_COLECAO + "(" +
             "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "nome VARCHAR(255), " +
             "descricao TEXT, " +
             "id_colecao INTEGER, " +
-            "CONSTRAINT fk_intens_colecao_colecao FOREIGN KEY (id_colecao) REFERENCES colecao (id))";
+            "CONSTRAINT fk_intens_colecao_colecao FOREIGN KEY (id_colecao) REFERENCES colecao (id) ON DELETE CASCADE)";
 
     private static final String DROP_TABLE_CATEGORIA = "DROP TABLE IF EXISTS " + TABLE_CATEGORIA;
     private static final String DROP_TABLE_COLECAO = "DROP TABLE IF EXISTS " + TABLE_COLECAO;
@@ -54,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //Cria as tabelas do banco de dados e insere as categorias iniciais
         db.execSQL(CREATE_TABLE_CATEGORIA);
         db.execSQL(CREATE_TABLE_COLECAO);
         db.execSQL(CREATE_TABLE_ITENS_COLECAO);
@@ -62,6 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        //Remove as tabelas do banco de dados e insere as categorias iniciais
         db.execSQL(DROP_TABLE_ITENS_COLECAO);
         db.execSQL(DROP_TABLE_COLECAO);
         db.execSQL(DROP_TABLE_CATEGORIA);
@@ -278,7 +280,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private boolean convertToBoolean(int number) {
         boolean boolValue;
 
-        // Check if it's greater than equal to 1
+        // Valida se é maior ou igual a 1
         if (number >= 1) {
             boolValue = true;
         }

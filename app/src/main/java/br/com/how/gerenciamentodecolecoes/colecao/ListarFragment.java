@@ -27,16 +27,19 @@ public class ListarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.colecao_fragment_listar, container, false);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
+        //Busca a listView de coleções
         ListView lv = v.findViewById(R.id.listViewColecoes);
+        //Busca todas as coleções preenchendo as list views
         databaseHelper.getAllColecao(getContext(), lv);
 
+        //Sobscreve o listner de selecionar um item da listView
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Pega o id da coleção e coloca como parâmetro para o fragment de editar
                 TextView tvId = view.findViewById(R.id.textViewIdListarColecao);
                 Bundle b = new Bundle();
                 b.putInt("id", Integer.parseInt(tvId.getText().toString()));
@@ -44,6 +47,7 @@ public class ListarFragment extends Fragment {
                 br.com.how.gerenciamentodecolecoes.colecao.EditarFragment editar = new EditarFragment();
                 FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 editar.setArguments(b);
+                //Muda a tela para a editar a coleção
                 ft.replace(R.id.frameColecao, editar).commit();
             }
         });
